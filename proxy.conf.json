@@ -1,0 +1,8 @@
+{
+  "/api": {
+    "target": "https://uisup-test-app.my1.urfu.ru",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}

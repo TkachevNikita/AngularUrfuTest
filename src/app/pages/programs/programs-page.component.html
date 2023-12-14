@@ -1,0 +1,13 @@
+<div class="programs">
+  <h2 class="clr-blue-main page__title programs__title">
+    Образовательные программы
+  </h2>
+  <ng-container *ngIf="programsPageViewModel.programs">
+    <app-pagination [programsPageViewModel]="programsPageViewModel"></app-pagination>
+  </ng-container>
+  <div class="programs__body">
+    <ng-container *ngFor="let program of programsPageViewModel.displayedPrograms">
+        <app-program [program]="program"></app-program>
+    </ng-container>
+</div>
+

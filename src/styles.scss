@@ -1,1 +1,41 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --linq-color: #0F2B5E;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  padding: 20px 60px;
+}
+
+.nav__linq {
+  font-size: 14px;
+  position: relative;
+}
+
+.nav__linq:after {
+	display: block;
+	position: absolute;
+	left: 0;
+	width: 0;
+	height: 2px;
+	background-color: var(--linq-color);
+	content: "";
+	transition: width 0.3s ease-out;
+}
+
+.nav__linq:hover:after,
+.nav__linq:focus:after {
+	width: 100%;
+}
+
+.page__title {
+  font-size: 30px;
+}

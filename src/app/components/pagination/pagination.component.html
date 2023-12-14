@@ -1,0 +1,60 @@
+<div class="u-pagination">
+  <p class="u-pagination__result"><p class="u-pagination__result">
+    Записи с
+    {{(paginationViewModel.currentPage - 1) * paginationViewModel.currentPageSize + 1}} по
+    {{ paginationViewModel.calculateLastRecordIndex()}} из {{programsPageViewModel.programs.length}}
+  </p>
+  <div class="u-pagination__limits">
+    Выводить по
+  <div class="u-pagination__limit-wrapper">
+    <button [class.u-pagination__limit_active]="paginationViewModel.currentPageSize === 20" (click)="paginationViewModel.changePageSize(20)" class="u-pagination__limit">20</button>
+    <button [class.u-pagination__limit_active]="paginationViewModel.currentPageSize === 40" (click)="paginationViewModel.changePageSize(40)" class="u-pagination__limit">40</button>
+    <button [class.u-pagination__limit_active]="paginationViewModel.currentPageSize === 60" (click)="paginationViewModel.changePageSize(60)" class="u-pagination__limit">60</button>
+  </div>
+</div>
+<div class="u-paginator">
+  <button
+    (click)="paginationViewModel.goToPage(paginationViewModel.currentPage - 1)"
+    [class.u-paginator__arrow-btn_inactive]="paginationViewModel.currentPage === 1"
+    class="u-paginator__arrow-btn">
+  </button>
+  <div class="u-paginator__pages">
+    <ng-container *ngIf="!paginationViewModel.getPageNumbers().includes(1)">
+      <button (click)="paginationViewModel.goToPage(1)" class="u-paginator__pages-num">1</button>
+      <button>
+        <svg xmlns="http://www.w3.org/2000/svg" width="9" height="3" viewBox="0 0 9 3" fill="none">
+          <path d="M1.61584 2.07C1.4105 2.07 1.23317 1.99533 1.08384 1.846C0.943836 1.69667 0.873836 1.51467 0.873836 1.3C0.873836 1.076 0.943836 0.894 1.08384 0.754C1.23317 0.614 1.4105 0.544 1.61584 0.544C1.82117 0.544 1.99384 0.614 2.13384 0.754C2.28317 0.894 2.35784 1.076 2.35784 1.3C2.35784 1.51467 2.28317 1.69667 2.13384 1.846C1.99384 1.99533 1.82117 2.07 1.61584 2.07ZM4.58263 2.07C4.3773 2.07 4.19997 1.99533 4.05063 1.846C3.91063 1.69667 3.84063 1.51467 3.84063 1.3C3.84063 1.076 3.91063 0.894 4.05063 0.754C4.19997 0.614 4.3773 0.544 4.58263 0.544C4.78797 0.544 4.96063 0.614 5.10063 0.754C5.24997 0.894 5.32463 1.076 5.32463 1.3C5.32463 1.51467 5.24997 1.69667 5.10063 1.846C4.96063 1.99533 4.78797 2.07 4.58263 2.07ZM7.54943 2.07C7.3441 2.07 7.16676 1.99533 7.01743 1.846C6.87743 1.69667 6.80743 1.51467 6.80743 1.3C6.80743 1.076 6.87743 0.894 7.01743 0.754C7.16676 0.614 7.3441 0.544 7.54943 0.544C7.75476 0.544 7.92743 0.614 8.06743 0.754C8.21676 0.894 8.29143 1.076 8.29143 1.3C8.29143 1.51467 8.21676 1.69667 8.06743 1.846C7.92743 1.99533 7.75476 2.07 7.54943 2.07Z" fill="#545454"/>
+        </svg>
+      </button>
+    </ng-container>
+    <div class="page__buttons" *ngFor="let page of paginationViewModel.getPageNumbers()">
+      <button
+        [class.u-paginator__pages-num_active]="paginationViewModel.currentPage === page"
+        (click)="paginationViewModel.goToPage(page)"
+        class="u-paginator__pages-num"
+      >
+        {{page}}
+      </button>
+    </div>
+    <ng-container *ngIf="!paginationViewModel.getPageNumbers().includes(paginationViewModel.pagesCount)">
+      <button>
+        <svg xmlns="http://www.w3.org/2000/svg" width="9" height="3" viewBox="0 0 9 3" fill="none">
+          <path d="M1.61584 2.07C1.4105 2.07 1.23317 1.99533 1.08384 1.846C0.943836 1.69667 0.873836 1.51467 0.873836 1.3C0.873836 1.076 0.943836 0.894 1.08384 0.754C1.23317 0.614 1.4105 0.544 1.61584 0.544C1.82117 0.544 1.99384 0.614 2.13384 0.754C2.28317 0.894 2.35784 1.076 2.35784 1.3C2.35784 1.51467 2.28317 1.69667 2.13384 1.846C1.99384 1.99533 1.82117 2.07 1.61584 2.07ZM4.58263 2.07C4.3773 2.07 4.19997 1.99533 4.05063 1.846C3.91063 1.69667 3.84063 1.51467 3.84063 1.3C3.84063 1.076 3.91063 0.894 4.05063 0.754C4.19997 0.614 4.3773 0.544 4.58263 0.544C4.78797 0.544 4.96063 0.614 5.10063 0.754C5.24997 0.894 5.32463 1.076 5.32463 1.3C5.32463 1.51467 5.24997 1.69667 5.10063 1.846C4.96063 1.99533 4.78797 2.07 4.58263 2.07ZM7.54943 2.07C7.3441 2.07 7.16676 1.99533 7.01743 1.846C6.87743 1.69667 6.80743 1.51467 6.80743 1.3C6.80743 1.076 6.87743 0.894 7.01743 0.754C7.16676 0.614 7.3441 0.544 7.54943 0.544C7.75476 0.544 7.92743 0.614 8.06743 0.754C8.21676 0.894 8.29143 1.076 8.29143 1.3C8.29143 1.51467 8.21676 1.69667 8.06743 1.846C7.92743 1.99533 7.75476 2.07 7.54943 2.07Z" fill="#545454"/>
+        </svg>
+      </button>
+      <button
+        [class.u-paginator__pages-num_active]="paginationViewModel.currentPage === paginationViewModel.pagesCount"
+        (click)="paginationViewModel.goToPage(paginationViewModel.pagesCount)"
+        class="u-paginator__pages-num"
+      >
+        {{paginationViewModel.pagesCount}}
+      </button>
+    </ng-container>
+  </div>
+    <button
+      (click)="paginationViewModel.goToPage(paginationViewModel.currentPage + 1)"
+      [class.u-paginator__arrow-btn-right_inactive]="paginationViewModel.currentPage === paginationViewModel.pagesCount"
+      class="u-paginator__arrow-btn u-paginator__arrow-btn-right">
+    </button>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+.program {
+  width: 350px;
+  font-size: 20px;
+  outline: 1px solid #1E4391;
+  transition: all 0.3s ease-in-out;
+}
+
+.program:hover {
+  transform: translateY(-5px);
+}
+
+.program__direction,
+.program__cypher {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.program__name,
+.program__cypher {
+  margin-bottom: 10px;
+}

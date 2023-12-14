@@ -1,0 +1,19 @@
+.logo {
+  width: 100px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  padding: 10px 60px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  box-shadow: 0 -6px 10px 5px rgba(0,0,0,0.5);
+}
+
+.header__nav {
+  display: flex;
+  gap: 25px;
+  margin-left: 60px;
+  justify-self: center;
+}
