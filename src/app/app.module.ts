@@ -8,6 +8,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProgramComponent } from './components/program/program.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { ProgramsDetailsPage } from './pages/programs-details/programs-details-page.component';
+import { FormsModule } from '@angular/forms';
+import { ErrorService } from './services/error.service';
+import { GlobalErrorComponent } from './components/global-error/global-error.component';
 
 @NgModule({
   declarations: [
@@ -16,14 +19,18 @@ import { ProgramsDetailsPage } from './pages/programs-details/programs-details-p
     ProgramsPage,
     ProgramComponent,
     PaginationComponent,
-    ProgramsDetailsPage
+    ProgramsDetailsPage,
+    GlobalErrorComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [
+    ErrorService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

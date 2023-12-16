@@ -5,3 +5,23 @@
   margin-top: 50px;
   justify-content: center;
 }
+
+.u-search {
+  width: 350px;
+  margin-top: 20px;
+}
+
+.programs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+app-pagination {
+  width: 100%;
+}
+
+.u-preloader {
+  position: absolute;
+  top: 50%;
+}

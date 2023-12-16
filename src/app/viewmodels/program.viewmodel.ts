@@ -1,9 +1,10 @@
+import { Router } from "@angular/router";
 import { ProgramModel } from "../models/program.model";
 
 export class ProgramViewModel {
-    constructor(private _model: ProgramModel) {}
+    constructor(private _model: ProgramModel, private _router: Router) {}
 
-    public logger(): void {
-      console.log('logged');
+    public openDetails(): void {
+        this._router.navigate([`programs/${this._model.id}`])
     }
 }

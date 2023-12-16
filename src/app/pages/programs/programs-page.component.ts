@@ -1,9 +1,7 @@
 import { Component } from "@angular/core";
-import { IProgram } from "src/app/interfaces/program.interface";
-import { ProgramModel } from "src/app/models/program.model";
+import { ApiService } from "src/app/services/api.service";
 import { PaginationService } from "src/app/services/pagination.service";
-import { ProgramService } from "src/app/services/program.service";
-import { ProgramViewModel } from "src/app/viewmodels/program.viewmodel";
+import { PaginationViewModel } from "src/app/viewmodels/pagination.viewmodel";
 import { ProgramsPageViewModel } from "src/app/viewmodels/programs-page.viewmodel";
 
 @Component({
@@ -14,7 +12,7 @@ import { ProgramsPageViewModel } from "src/app/viewmodels/programs-page.viewmode
 export class ProgramsPage {
   public programsPageViewModel: ProgramsPageViewModel;
 
-  constructor(private _programService: ProgramService) {
-      this.programsPageViewModel = new ProgramsPageViewModel(this._programService);
+  constructor(private _programService: ApiService, private _paginationService: PaginationService) {
+      this.programsPageViewModel = new ProgramsPageViewModel(this._programService, this._paginationService);
   }
 }

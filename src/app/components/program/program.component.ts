@@ -1,4 +1,5 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 import { ProgramModel } from "src/app/models/program.model";
 import { ProgramViewModel } from "src/app/viewmodels/program.viewmodel";
 
@@ -7,7 +8,13 @@ import { ProgramViewModel } from "src/app/viewmodels/program.viewmodel";
     selector: 'app-program',
     styleUrls: ['./styles/program.component.scss']
 })
-export class ProgramComponent {
+export class ProgramComponent implements OnInit {
     @Input() public program!: ProgramModel;
-    public programViewModel: ProgramViewModel = new ProgramViewModel(this.program);
+    public programViewModel!: ProgramViewModel;
+
+    constructor(private _router: Router) {}
+
+    ngOnInit(): void {
+        this.programViewModel = new ProgramViewModel(this.program, this._router);
+    }
 }

@@ -2,7 +2,7 @@
   <p class="u-pagination__result"><p class="u-pagination__result">
     Записи с
     {{(paginationViewModel.currentPage - 1) * paginationViewModel.currentPageSize + 1}} по
-    {{ paginationViewModel.calculateLastRecordIndex()}} из {{programsPageViewModel.programs.length}}
+    {{ paginationViewModel.calculateLastRecordIndex()}} из {{programsPageViewModel.filteredPrograms.length}}
   </p>
   <div class="u-pagination__limits">
     Выводить по

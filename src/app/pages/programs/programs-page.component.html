@@ -1,9 +1,23 @@
+<app-global-error></app-global-error>
 <div class="programs">
   <h2 class="clr-blue-main page__title programs__title">
     Образовательные программы
   </h2>
+  <div class="u-search">
+    <input (input)="programsPageViewModel.filterItems($event)" placeholder="Введите название программы" class="u-input" type="search"/>
+    <button class="u-search-loupe" type="button"></button>
+  </div>
+  <ng-container *ngIf="!programsPageViewModel.filteredPrograms">
+    <div class="u-preloader">
+      <svg class="u-preloader-container" width="76" height="76" viewBox="0 0 76 76" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M38 74C57.8823 74 74 57.8823 74 38C74 18.1177 57.8823 2 38 2C18.1177 2 2 18.1177 2 38C2 57.8823 18.1177 74 38 74ZM38 76C58.9868 76 76 58.9868 76 38C76 17.0132 58.9868 0 38 0C17.0132 0 0 17.0132 0 38C0 58.9868 17.0132 76 38 76Z" fill="#1E4391"/>
+        <path class="u-preloader-dot" d="M12.2573 17.5283C12.2573 20.0136 10.2426 22.0283 7.75732 22.0283C5.27204 22.0283 3.25732 20.0136 3.25732 17.5283C3.25732 15.043 5.27204 13.0283 7.75732 13.0283C10.2426 13.0283 12.2573 15.043 12.2573 17.5283Z" fill="#1E4391"/>
+        <path class="u-preloader-logo" d="M52.5974 25.4219C52.9649 24.721 53.5215 24.137 54.2039 23.7362C54.8864 23.3354 55.6675 23.1338 56.4587 23.1542L56.8417 21.7254H45.4303L45.0472 23.1542C46.9626 23.1542 49.575 23.9203 49.7512 25.4219H52.5897H52.5974ZM19.543 23.1542C22.4274 23.1542 23.6456 25.1653 24.9441 27.3219L35.5588 45.525C36.0606 46.4329 36.5509 47.5322 36.5356 48.5589C36.4973 51.2403 33.0229 52.2171 30.9429 52.3167C29.4339 52.3686 27.9339 52.0642 26.5645 51.428L25.7179 52.5159C26.2121 54.6151 28.1542 57.1663 30.8242 57.1471C35.463 57.1126 37.8993 52.8721 39.7648 49.4169L43.2124 43.016L33.1838 25.8203C32.2568 24.288 33.7776 23.1618 35.3941 23.1389L35.7771 21.7139H19.9145L19.543 23.1542Z" fill="#1E4391"/>
+      </svg>
+    </div>
+  </ng-container>
   <ng-container *ngIf="programsPageViewModel.programs">
-    <app-pagination [programsPageViewModel]="programsPageViewModel"></app-pagination>
+    <app-pagination  [programsPageViewModel]="programsPageViewModel"></app-pagination>
   </ng-container>
   <div class="programs__body">
     <ng-container *ngFor="let program of programsPageViewModel.displayedPrograms">

@@ -1,0 +1,18 @@
+.details__title {
+  font-size: 30px;
+  display: inline-block;
+  margin-bottom: 30px;
+}
+
+.details__modules {
+  margin-top: 20px;
+}
+
+.details-content {
+  display: flex;
+  gap: 10px;
+}
+
+.details__module:not(:last-child) {
+  margin-bottom: 15px;
+}
