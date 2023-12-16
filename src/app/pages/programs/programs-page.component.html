@@ -15,7 +15,7 @@
       </svg>
     </div>
   </ng-container>
-  <ng-container *ngIf="programsPageViewModel.programs">
+  <ng-container *ngIf="programsPageViewModel.programs && programsPageViewModel.filteredPrograms.length > 0">
     <app-pagination  [programsPageViewModel]="programsPageViewModel"></app-pagination>
   </ng-container>
   <div class="programs__body">

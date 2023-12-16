@@ -11,22 +11,22 @@
 <div class="details" *ngIf="programDetails">
   <p class="details__title u-benefit">{{programDetails.cypher}} {{programDetails.name}}</p>
   <p class="ds">
-    Уровень обучения: {{programDetails.level}}
+    Уровень обучения: {{programDetails | infoFormat: 'level'}}
   </p>
   <p class="ds">
-    Стандарт обучения: {{programDetails.standard}}
+    Стандарт обучения: {{programDetails | infoFormat: 'standard'}}
   </p>
   <p class="ds">
-    Год начала обучения: {{programDetails.startYear}}
+    Год начала обучения: {{programDetails | infoFormat: 'startYear'}}
   </p>
   <p class="ds">
-    Обучающий институт: {{programDetails.institute.title}}
+    Обучающий институт: {{programDetails | infoFormat: 'institute.title'}}
   </p>
   <p class="ds">
-    Обучающая кафедра: {{programDetails.chair.title}}
+    Обучающая кафедра: {{programDetails | infoFormat: 'chair.title'}}
   </p>
   <p class="ds">
-    Ответственное лицо: {{programDetails.head.fullname}} ({{programDetails.head.username}})
+    Ответственное лицо: {{ programDetails | infoFormat:'head.fullname' }} ({{ programDetails | infoFormat:'head.username' }})
   </p>
   <p class="ds">
     Аккредитация: {{programDetails.isBeingAccredited ? 'Есть' : 'Отсутствует'}}
@@ -53,10 +53,10 @@
               <div class="details__module-name details-content">
                   <p class="ds">Название модуля:</p> {{module.name}}
               </div>
-              <div class="details__module-years details-content">
-                  <p class="ds">Годы применения:</p> {{module.years}}
+              <div *ngIf="module.years" class="details__module-years details-content">
+                  <p class="ds">Годы применения:</p> {{module.years.length > 0 ? module.years : 'Информация отсутствует'}}
               </div>
-              <div class="details__module-files details-content">
+              <div *ngIf="module.rpm.id" class="details__module-files details-content">
                 <p class="ds">Файл РПМ:</p> <button (click)="programsDetailsPageViewModel.downloadFile(module)" class="u-link">Скачать</button>
             </div>
             </div>

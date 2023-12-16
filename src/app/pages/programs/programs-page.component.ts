@@ -1,7 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from "@angular/core";
 import { ApiService } from "src/app/services/api.service";
 import { PaginationService } from "src/app/services/pagination.service";
-import { PaginationViewModel } from "src/app/viewmodels/pagination.viewmodel";
 import { ProgramsPageViewModel } from "src/app/viewmodels/programs-page.viewmodel";
 
 @Component({

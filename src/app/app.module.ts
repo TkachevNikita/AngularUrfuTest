@@ -11,6 +11,7 @@ import { ProgramsDetailsPage } from './pages/programs-details/programs-details-p
 import { FormsModule } from '@angular/forms';
 import { ErrorService } from './services/error.service';
 import { GlobalErrorComponent } from './components/global-error/global-error.component';
+import { InfoFormatPipe } from './pipes/infoFormat';
 
 @NgModule({
   declarations: [
@@ -20,13 +21,14 @@ import { GlobalErrorComponent } from './components/global-error/global-error.com
     ProgramComponent,
     PaginationComponent,
     ProgramsDetailsPage,
-    GlobalErrorComponent
+    GlobalErrorComponent,
+    InfoFormatPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [
     ErrorService
