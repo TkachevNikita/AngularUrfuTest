@@ -1,5 +1,8 @@
 <ng-container *ngIf="errorService.$error | async as error">
   <div class="error">
       {{error}}
+      <div (click)="errorService.clear()" class="close">
+        Закрыть
+      </div>
   </div>
 </ng-container>

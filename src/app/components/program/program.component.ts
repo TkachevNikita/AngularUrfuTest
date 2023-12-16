@@ -11,6 +11,7 @@ import { ProgramViewModel } from "src/app/viewmodels/program.viewmodel";
 export class ProgramComponent implements OnInit {
     @Input() public program!: ProgramModel;
     public programViewModel!: ProgramViewModel;
+    showId: boolean = false;
 
     constructor(private _router: Router) {}
 

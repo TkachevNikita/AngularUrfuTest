@@ -1,4 +1,4 @@
-<div class="program u-card-second">
+<div class="program u-card-second" (mouseenter)="showId = !showId" (mouseleave)="showId = !showId">
   <div class="program__name">
     {{program.name}}
   </div>
@@ -7,6 +7,9 @@
   </div>
   <p class="program__direction ds">
     Направление: {{program.direction.name}}
+  </p>
+  <p class="program__direction ds" *ngIf="showId">
+    ID: {{program.id}}
   </p>
   <button (click)="programViewModel.openDetails()" class="u-card-second-action"></button>
 </div>
