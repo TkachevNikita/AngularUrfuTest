@@ -1,7 +1,7 @@
 <div class="u-pagination">
   <p class="u-pagination__result"><p class="u-pagination__result">
     Записи с
-    {{(paginationViewModel.currentPage - 1) * paginationViewModel.currentPageSize + 1}} по
+    {{(paginationService.currentPage - 1) * paginationService.currentPage + 1}} по
     {{ paginationViewModel.calculateLastRecordIndex()}} из {{programsPageViewModel.filteredPrograms.length}}
   </p>
   <div class="u-pagination__limits">
@@ -14,8 +14,8 @@
 </div>
 <div class="u-paginator">
   <button
-    (click)="paginationViewModel.goToPage(paginationViewModel.currentPage - 1)"
-    [class.u-paginator__arrow-btn_inactive]="paginationViewModel.currentPage === 1"
+    (click)="paginationViewModel.goToPage(paginationService.currentPage - 1)"
+    [class.u-paginator__arrow-btn_inactive]="paginationService.currentPage === 1"
     class="u-paginator__arrow-btn">
   </button>
   <div class="u-paginator__pages">
@@ -29,7 +29,7 @@
     </ng-container>
     <div class="page__buttons" *ngFor="let page of paginationViewModel.getPageNumbers()">
       <button
-        [class.u-paginator__pages-num_active]="paginationViewModel.currentPage === page"
+        [class.u-paginator__pages-num_active]="paginationService.currentPage === page"
         (click)="paginationViewModel.goToPage(page)"
         class="u-paginator__pages-num"
       >
@@ -43,7 +43,7 @@
         </svg>
       </button>
       <button
-        [class.u-paginator__pages-num_active]="paginationViewModel.currentPage === paginationViewModel.pagesCount"
+        [class.u-paginator__pages-num_active]="paginationService.currentPage === paginationViewModel.pagesCount"
         (click)="paginationViewModel.goToPage(paginationViewModel.pagesCount)"
         class="u-paginator__pages-num"
       >
@@ -52,8 +52,8 @@
     </ng-container>
   </div>
     <button
-      (click)="paginationViewModel.goToPage(paginationViewModel.currentPage + 1)"
-      [class.u-paginator__arrow-btn-right_inactive]="paginationViewModel.currentPage === paginationViewModel.pagesCount"
+      (click)="paginationViewModel.goToPage(paginationService.currentPage + 1)"
+      [class.u-paginator__arrow-btn-right_inactive]="paginationService.currentPage === paginationViewModel.pagesCount"
       class="u-paginator__arrow-btn u-paginator__arrow-btn-right">
     </button>
   </div>

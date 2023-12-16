@@ -6,7 +6,6 @@ import { ProgramsPageViewModel } from "./programs-page.viewmodel";
 export class PaginationViewModel {
 
     public currentPageSize: number = 20;
-    public currentPage: number = this._paginationService.currentPage;
     public pageCountToShow: number = 5;
     public pagesCount!: number;
 
@@ -19,7 +18,7 @@ export class PaginationViewModel {
     }
 
     public calculateLastRecordIndex(): number {
-      const lastIndex = this.currentPageSize * this.currentPage;
+      const lastIndex = this.currentPageSize * this._paginationService.currentPage;
       return Math.min(lastIndex, this._programsPageViewModel.filteredPrograms.length);
     }
 
@@ -35,10 +34,9 @@ export class PaginationViewModel {
 
     public getPageNumbers(): number[] {
       const pageCountToShow = this.pageCountToShow;
-      const currentPage = this.currentPage;
       const pagesCount = this.pagesCount;
       this.pagesCount = this._paginationService.getTotalPages(this._programsPageViewModel.filteredPrograms.length);
-      let startPage = Math.max(1, currentPage - Math.floor(pageCountToShow / 2));
+      let startPage = Math.max(1, this._paginationService.currentPage - Math.floor(pageCountToShow / 2));
       let endPage = Math.min(pagesCount, startPage + pageCountToShow - 1);
 
       if (endPage - startPage + 1 < pageCountToShow) {
@@ -58,7 +56,7 @@ export class PaginationViewModel {
 
     public goToPage(page: number): void {
       this._paginationService.goToPage(page, this._programsPageViewModel.filteredPrograms.length);
-      this.currentPage = page;
+      this._paginationService.currentPage = page;
       this._paginationService.currentPage = page;
       this._programsPageViewModel.displayedPrograms = this.getDisplayedPrograms();
     }

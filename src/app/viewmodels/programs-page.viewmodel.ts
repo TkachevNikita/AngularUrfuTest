@@ -30,6 +30,8 @@ export class ProgramsPageViewModel {
               program.name.toLowerCase().includes(searchTerm.toLowerCase())
           );
           this.displayedPrograms = this.filteredPrograms.slice(this._paginationService.getStartIndex() - 1, this._paginationService.getEndIndex(this.filteredPrograms.length))
+          this._paginationService.currentPage = 1;
+          console.log(this._paginationService.currentPage);
           this._cdk.detectChanges();
       }, 500)
   }

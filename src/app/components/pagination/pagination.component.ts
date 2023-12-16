@@ -12,9 +12,9 @@ export class PaginationComponent implements OnInit {
     @Input() programsPageViewModel!: ProgramsPageViewModel;
     public paginationViewModel!: PaginationViewModel;
 
-    constructor(private _paginationService: PaginationService) {}
+    constructor(public paginationService: PaginationService) {}
 
     ngOnInit(): void {
-        this.paginationViewModel = new PaginationViewModel(this._paginationService, this.programsPageViewModel);
+        this.paginationViewModel = new PaginationViewModel(this.paginationService, this.programsPageViewModel);
     }
 }
