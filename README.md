@@ -5,7 +5,8 @@
 3) Для запуска приложения, введите команду npm start
 
 ## Инструменты
-Angular 15 + ts
-RxJS
-UI-KITS - https://uikit.my1.urfu.ru/#/ui/inputs
-
+<ul>
+  <li>Angular 15 + ts</li>
+  <li>RxJS</li>
+  <li>UI-KITS - https://uikit.my1.urfu.ru/#/ui/inputs</li>
+</ul>
