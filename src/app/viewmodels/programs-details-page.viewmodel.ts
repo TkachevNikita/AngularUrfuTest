@@ -5,6 +5,10 @@ export class ProgramsDetailsPageViewModel {
 
   constructor(private _apiService: ApiService) {}
 
+  /**
+   * Скачать файл образовательной программы
+   * @param {IModule} module Модуль образовательной программы
+   */
   public downloadFile(module: IModule) {
     this._apiService.getModuleFile(module.rpm.id)
       .subscribe(rpm => {

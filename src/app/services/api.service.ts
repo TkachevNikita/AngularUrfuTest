@@ -38,7 +38,7 @@ export class ApiService {
 
     /**
      * Получение образовательных программ
-     * @returns
+     * @returns {Observable<ProgramModel[]>} список образовательных программ
      */
     public getPrograms(): Observable<ProgramModel[]> {
       return this.requestPrograms()
@@ -47,6 +47,11 @@ export class ApiService {
         );
     }
 
+    /**
+     * Получение подробностей образовательной программы
+     * @param id Индентификатор образовательной программы
+     * @returns {Observable<ProgramModel[]>} Список образовательных программ
+     */
     public getProgramDetails(id: number): Observable<ProgramDetailsModel> {
         return this.requestProgramDetails(id)
           .pipe(
@@ -54,10 +59,20 @@ export class ApiService {
           )
     }
 
+    /**
+     * Получение модулей образовательной программы
+     * @param id Индентификатор образовательной программы
+     * @returns {Observable<IModule[]>} Список модулей образовательной программы
+     */
     public getProgramModules(id: number): Observable<IModule[]> {
         return this.requestModules(id);
     }
 
+    /**
+     * Получение файла модуля образовательной программы
+     * @param id Индентификатор образовательного модуля
+     * @returns {Observable<IRPM>} Файл РПМ образовательного модуля
+     */
     public getModuleFile(id: number): Observable<IRPM> {
         return this.requestFile(id)
           .pipe(
@@ -142,6 +157,10 @@ export class ApiService {
           );
     }
 
+    /**
+     * Обработка ошибок
+     * @param {HttpErrorResponse} error Ошибка
+     */
     private errorHandler(error: HttpErrorResponse) {
         this._errorService.handle(error.message);
     }

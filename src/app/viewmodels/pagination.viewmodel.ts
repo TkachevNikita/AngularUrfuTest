@@ -6,7 +6,7 @@ import { ProgramsPageViewModel } from "./programs-page.viewmodel";
 export class PaginationViewModel {
 
     public currentPageSize: number = 20;
-    public currentPage: number = 1;
+    public currentPage: number = this._paginationService.currentPage;
     public pageCountToShow: number = 5;
     public pagesCount!: number;
 
@@ -23,6 +23,10 @@ export class PaginationViewModel {
       return Math.min(lastIndex, this._programsPageViewModel.filteredPrograms.length);
     }
 
+    /**
+     * Получить отображаемые на странице элементы
+     * @returns {ProgramModel[]} Список отображаемых на странице элементов
+     */
     public getDisplayedPrograms(): ProgramModel[] {
       const startIndex = this._paginationService.getStartIndex();
       const endIndex = this._paginationService.getEndIndex(this._programsPageViewModel.filteredPrograms.length);
