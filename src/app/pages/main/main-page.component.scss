@@ -1,0 +1,33 @@
+.main {
+  position: relative;
+  background: url('../../../assets/main-background.jpg') center no-repeat;
+  -webkit-background-size: cover;
+          background-size: cover;
+  height: 100vh;
+}
+
+.main:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,.5);
+  z-index: 2;
+}
+
+.main__content {
+  color: #FFFFFF;
+  position: absolute;
+  z-index: 1000;
+  top: 25%;
+  font-size: 36px;
+  width: 65vw;
+  left: 10%;
+}
+
+.main__button {
+  margin-top: 40px;
+  font-weight: 600;
+}

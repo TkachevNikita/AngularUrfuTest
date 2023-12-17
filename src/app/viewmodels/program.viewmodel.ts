@@ -1,5 +1,5 @@
-import { Router } from "@angular/router";
-import { ProgramModel } from "../models/program.model";
+import { Router } from '@angular/router';
+import { ProgramModel } from '../models/program.model';
 
 export class ProgramViewModel {
     constructor(private _model: ProgramModel, private _router: Router) {}
@@ -8,6 +8,6 @@ export class ProgramViewModel {
      * Переход на страницу подробностей
      */
     public openDetails(): void {
-        this._router.navigate([`programs/${this._model.id}`])
+        this._router.navigate([`app/programs/${this._model.id}`]);
     }
 }

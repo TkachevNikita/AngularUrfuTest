@@ -12,27 +12,33 @@ import { FormsModule } from '@angular/forms';
 import { ErrorService } from './services/error.service';
 import { GlobalErrorComponent } from './components/global-error/global-error.component';
 import { InfoFormatPipe } from './pipes/infoFormat';
+import { MainPageComponent } from './pages/main/main-page.component';
+import { AppLayoutComponent } from './layouts/app/app-layout.component';
+import { MainLayoutComponent } from './layouts/main/main-layout.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    ProgramsPage,
-    ProgramComponent,
-    PaginationComponent,
-    ProgramsDetailsPage,
-    GlobalErrorComponent,
-    InfoFormatPipe
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule,
-  ],
-  providers: [
-    ErrorService
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        HeaderComponent,
+        ProgramsPage,
+        ProgramComponent,
+        PaginationComponent,
+        ProgramsDetailsPage,
+        GlobalErrorComponent,
+        InfoFormatPipe,
+        MainPageComponent,
+        AppLayoutComponent,
+        MainLayoutComponent
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        FormsModule,
+    ],
+    providers: [
+        ErrorService
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

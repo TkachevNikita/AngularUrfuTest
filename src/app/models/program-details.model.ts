@@ -1,8 +1,8 @@
-import { IProgramDetails } from "../interfaces/program-details.interface";
-import { Chair } from "../types/chair.type";
-import { Duration } from "../types/duration.type";
-import { Head } from "../types/head.type";
-import { Institute } from "../types/institute.type";
+import { IProgramDetails } from '../interfaces/program-details.interface';
+import { Chair } from '../types/chair.type';
+import { Duration } from '../types/duration.type';
+import { Head } from '../types/head.type';
+import { Institute } from '../types/institute.type';
 
 export class ProgramDetailsModel {
     public readonly id: number;
@@ -29,7 +29,7 @@ export class ProgramDetailsModel {
         this.institute = programDetails.institute;
         this.uniId = programDetails.uniId;
         this.level = programDetails.level;
-        this.standard = programDetails.standard
+        this.standard = programDetails.standard;
         this.head = programDetails.head;
         this.startYear = programDetails.startYear;
         this.duration = programDetails.duration;

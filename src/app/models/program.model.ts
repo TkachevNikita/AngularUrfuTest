@@ -1,9 +1,9 @@
-import { IProgram } from "../interfaces/program.interface";
-import { Direction } from "../types/direction.type";
+import { IProgram } from '../interfaces/program.interface';
+import { Direction } from '../types/direction.type';
 
 export class ProgramModel {
     public readonly id: number;
-    public readonly direction: Direction
+    public readonly direction: Direction;
     public readonly cypher: string;
     public readonly name: string;
 

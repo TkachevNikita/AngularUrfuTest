@@ -74,13 +74,7 @@ export class ApiService {
      * @returns {Observable<IRPM>} Файл РПМ образовательного модуля
      */
     public getModuleFile(id: number): Observable<IRPM> {
-        return this.requestFile(id)
-          .pipe(
-              catchError(error => {
-                this.errorHandler(error);
-                return of();
-              })
-          );
+        return this.requestFile(id);
     }
 
     private requestFile(id: number): Observable<IRPM> {
