@@ -1,7 +1,7 @@
-import { Chair } from "../types/chair.type"
-import { Duration } from "../types/duration.type"
-import { Head } from "../types/head.type"
-import { Institute } from "../types/institute.type"
+import { Chair } from '../types/chair.type';
+import { Duration } from '../types/duration.type';
+import { Head } from '../types/head.type';
+import { Institute } from '../types/institute.type';
 
 export interface IProgramDetails {
   id: number,

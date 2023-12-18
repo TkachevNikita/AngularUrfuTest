@@ -3,25 +3,25 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'infoFormat'
+    name: 'infoFormat'
 })
 export class InfoFormatPipe implements PipeTransform {
-  transform(value: any, fieldPath: string): string {
-    if (!value) {
-      return 'Информация отсутствует';
+    public transform(value: any, fieldPath: string): string {
+        if (!value) {
+            return 'Информация отсутствует';
+        }
+
+        const fields = fieldPath.split('.');
+        let result = value;
+
+        for (const field of fields) {
+            if (result && result[field] !== undefined) {
+                result = result[field];
+            } else {
+                return 'Информация отсутствует';
+            }
+        }
+
+        return result;
     }
-
-    const fields = fieldPath.split('.');
-    let result = value;
-
-    for (const field of fields) {
-      if (result && result[field] !== undefined) {
-        result = result[field];
-      } else {
-        return 'Информация отсутствует';
-      }
-    }
-
-    return result;
-  }
 }

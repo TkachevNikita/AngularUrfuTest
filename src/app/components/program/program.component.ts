@@ -1,7 +1,7 @@
-import { Component, Input, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
-import { ProgramModel } from "src/app/models/program.model";
-import { ProgramViewModel } from "src/app/viewmodels/program.viewmodel";
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ProgramModel } from 'src/app/models/program.model';
+import { ProgramViewModel } from 'src/app/viewmodels/program.viewmodel';
 
 @Component({
     templateUrl: 'program.component.html',
@@ -11,11 +11,11 @@ import { ProgramViewModel } from "src/app/viewmodels/program.viewmodel";
 export class ProgramComponent implements OnInit {
     @Input() public program!: ProgramModel;
     public programViewModel!: ProgramViewModel;
-    showId: boolean = false;
+    public showId: boolean = false;
 
     constructor(private _router: Router) {}
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         this.programViewModel = new ProgramViewModel(this.program, this._router);
     }
 }
