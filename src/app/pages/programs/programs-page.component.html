@@ -7,7 +7,7 @@
     <input (input)="programsPageViewModel.filterItems($event)" placeholder="Введите название программы" class="u-input" type="search"/>
     <button class="u-search-loupe" type="button"></button>
   </div>
-  <ng-container *ngIf="!programsPageViewModel.filteredPrograms">
+  <ng-container *ngIf="!(programsPageViewModel.programs$.getValue().length > 0)">
     <div class="u-preloader">
       <svg class="u-preloader-container" width="76" height="76" viewBox="0 0 76 76" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path fill-rule="evenodd" clip-rule="evenodd" d="M38 74C57.8823 74 74 57.8823 74 38C74 18.1177 57.8823 2 38 2C18.1177 2 2 18.1177 2 38C2 57.8823 18.1177 74 38 74ZM38 76C58.9868 76 76 58.9868 76 38C76 17.0132 58.9868 0 38 0C17.0132 0 0 17.0132 0 38C0 58.9868 17.0132 76 38 76Z" fill="#1E4391"/>
@@ -16,11 +16,11 @@
       </svg>
     </div>
   </ng-container>
-  <ng-container *ngIf="programsPageViewModel.programs && programsPageViewModel.filteredPrograms.length > 0">
+  <ng-container *ngIf="programsPageViewModel.programs$.getValue() && programsPageViewModel.filteredPrograms$.getValue().length > 0">
     <app-pagination  [programsPageViewModel]="programsPageViewModel"></app-pagination>
   </ng-container>
   <div class="programs__body">
-    <ng-container *ngFor="let program of programsPageViewModel.displayedPrograms">
+    <ng-container *ngFor="let program of programsPageViewModel.displayedPrograms$ | async">
         <app-program [program]="program"></app-program>
     </ng-container>
 </div>

@@ -12,14 +12,14 @@ export class PaginationViewModel {
       private _paginationService: PaginationService,
       private _programsPageViewModel: ProgramsPageViewModel
     ) {
-        this.pagesCount = this._paginationService.getTotalPages(this._programsPageViewModel.filteredPrograms.length);
-        this._programsPageViewModel.displayedPrograms = this.getDisplayedPrograms();
+        this.pagesCount = this._paginationService.getTotalPages(this._programsPageViewModel.filteredPrograms$.getValue().length);
+        this._programsPageViewModel.displayedPrograms$.next(this.getDisplayedPrograms());
     }
 
     public calculateLastRecordIndex(): number {
         const lastIndex = this.currentPageSize * this._paginationService.currentPage;
 
-        return Math.min(lastIndex, this._programsPageViewModel.filteredPrograms.length);
+        return Math.min(lastIndex, this._programsPageViewModel.filteredPrograms$.getValue().length);
     }
 
     /**
@@ -28,15 +28,15 @@ export class PaginationViewModel {
      */
     public getDisplayedPrograms(): ProgramModel[] {
         const startIndex = this._paginationService.getStartIndex();
-        const endIndex = this._paginationService.getEndIndex(this._programsPageViewModel.filteredPrograms.length);
+        const endIndex = this._paginationService.getEndIndex(this._programsPageViewModel.filteredPrograms$.getValue().length);
 
-        return this._programsPageViewModel.filteredPrograms.slice(startIndex - 1, endIndex);
+        return this._programsPageViewModel.filteredPrograms$.getValue().slice(startIndex - 1, endIndex);
     }
 
     public getPageNumbers(): number[] {
         const pageCountToShow = this.pageCountToShow;
         const pagesCount = this.pagesCount;
-        this.pagesCount = this._paginationService.getTotalPages(this._programsPageViewModel.filteredPrograms.length);
+        this.pagesCount = this._paginationService.getTotalPages(this._programsPageViewModel.filteredPrograms$.getValue().length);
         let startPage = Math.max(1, this._paginationService.currentPage - Math.floor(pageCountToShow / 2));
         const endPage = Math.min(pagesCount, startPage + pageCountToShow - 1);
 
@@ -52,20 +52,19 @@ export class PaginationViewModel {
     }
 
     public nextPage(): void {
-        this._paginationService.nextPage(this._programsPageViewModel.filteredPrograms.length);
+        this._paginationService.nextPage(this._programsPageViewModel.filteredPrograms$.getValue().length);
     }
 
     public goToPage(page: number): void {
-        this._paginationService.goToPage(page, this._programsPageViewModel.filteredPrograms.length);
+        this._paginationService.goToPage(page, this._programsPageViewModel.filteredPrograms$.getValue().length);
         this._paginationService.currentPage = page;
-        this._paginationService.currentPage = page;
-        this._programsPageViewModel.displayedPrograms = this.getDisplayedPrograms();
+        this._programsPageViewModel.displayedPrograms$.next(this.getDisplayedPrograms());
     }
 
     public changePageSize(size: number): void {
         this.currentPageSize = size;
-        this._paginationService.changePageSize(size, this._programsPageViewModel.filteredPrograms.length);
-        this.pagesCount = this._paginationService.getTotalPages(this._programsPageViewModel.filteredPrograms.length);
+        this._paginationService.changePageSize(size, this._programsPageViewModel.filteredPrograms$.getValue().length);
+        this.pagesCount = this._paginationService.getTotalPages(this._programsPageViewModel.filteredPrograms$.getValue().length);
         this.goToPage(1);
     }
 }

@@ -1,8 +1,8 @@
 <div class="u-pagination">
   <p class="u-pagination__result"><p class="u-pagination__result">
     Записи с
-    {{(paginationService.currentPage - 1) * paginationService.currentPage + 1}} по
-    {{ paginationViewModel.calculateLastRecordIndex()}} из {{programsPageViewModel.filteredPrograms.length}}
+    {{(paginationService.currentPage - 1) * paginationViewModel.currentPageSize + 1}} по
+    {{ paginationViewModel.calculateLastRecordIndex()}} из {{programsPageViewModel.filteredPrograms$.getValue().length}}
   </p>
   <div class="u-pagination__limits">
     Выводить по

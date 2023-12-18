@@ -23,6 +23,6 @@ export class ProgramsPage implements OnInit, OnDestroy {
     }
 
     public ngOnDestroy(): void {
-        this.programsPageViewModel.subcription$.unsubscribe;
+        this.programsPageViewModel.subscription$.unsubscribe;
     }
 }
